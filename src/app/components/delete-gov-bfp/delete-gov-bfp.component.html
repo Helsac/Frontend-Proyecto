@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-primary btn-lg"  [disabled]="!active()" (click)="open(content)">
+    Delete
+  </button>
+
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h4 > Are you sure you want to delete?</h4>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button"  class="btn btn-danger"  (click) = "delete()"> Delete </button>
+        <button type="button"  class="btn btn-secondary"   data-dismiss="modal">Cancel</button>
+      </div>
+  </ng-template>
+
+

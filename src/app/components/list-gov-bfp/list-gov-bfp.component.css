@@ -1,0 +1,16 @@
+.table tr.active td {
+    background-color:#123456 !important;
+    color: white;
+  }
+
+  ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color: white !important;
+
+    color:black
+    
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: #123456 !important;
+    border-color: #123456
+}

@@ -12,10 +12,20 @@ import { GovernmentBFP } from 'src/app/model/government-bfp';
 })
 export class RegisterGovBfpComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  govBFP : GovernmentBFP 
+
+  constructor(private govBFPService : GovernmentBFPService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.govBFP = new GovernmentBFP()
   }
 
-  
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'New'});
+  }
+  save(){
+    console.log("GUARDANDO")
+    this.govBFPService.registerGovBFP(this.govBFP).subscribe(data => console.log(data));
+
+  }
 }

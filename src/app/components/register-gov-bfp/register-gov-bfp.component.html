@@ -1,8 +1,56 @@
-<button type="button" class="btn btn-primary">
+<button type="button" class="btn btn-primary btn-lg" (click)="open(content)">
     New
   </button>
 
 
 
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Fiscal Report</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit) = "save()" #govBFPForm="ngForm">
+        <div class="form-group">
+
+          <label for="yearOfBalance">Year of Balance</label>
+          <div class="input-group">
+            <input id="yearOfBalance" required [(ngModel)]="govBFP.yearOfBalance" name = "yearOfBalance"  class="form-control" ngModel >
+          </div>
+
+          <label for="state">Actual/Revised/Estimates</label>
+          <div class="input-group">
+            <input id=".state" required [(ngModel)]="govBFP.state" name = "state" class="form-control" ngModel>
+          </div>
+
+          <label for="category">Category</label>
+          <div class="input-group">
+            <input id="category" [(ngModel)]="govBFP.category" name = "category"class="form-control" ngModel>
+          </div>
+
+          <label for="item">Item</label>
+          <div class="input-group">
+            <input id="item" [(ngModel)]="govBFP.item" name = "item" class="form-control" ngModel>
+          </div>
+
+          <label for="amount">	Amount( S$ million)</label>
+          <div class="input-group">
+            <input id="amount" [(ngModel)]="govBFP.amount" name = "amount" class="form-control" ngModel>
+          </div>
+
+          <label for="percentOfGdp">Percent of gdp</label>
+          <div class="input-group">
+            <input id="percentOfGdp" [(ngModel)]="govBFP.percentOfGdp" name = "percentOfGdp" class="form-control" ngModel >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-primary">Save</button>
+          </div>
+      </form>
+    </div>
+    
+  </ng-template>
 
 

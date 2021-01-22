@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap'; 
 import { GovernmentBFPService } from 'src/app/services/government-bfp.service';
 import { GovernmentBFP } from 'src/app/model/government-bfp';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 
 
@@ -14,7 +15,7 @@ import { GovernmentBFP } from 'src/app/model/government-bfp';
 })
 export class ListGovBFPComponent implements OnInit {
 
-  constructor(private govBFPService : GovernmentBFPService) { }
+  constructor(private govBFPService : GovernmentBFPService, private communicationService : CommunicationService) { }
 
   govBFPs! : GovernmentBFP[]
   page : number
@@ -23,12 +24,20 @@ export class ListGovBFPComponent implements OnInit {
   totalI: number
   showPagination : boolean = false
   loadedD : boolean = false
+  selectedRow : number
   ngOnInit(): void {
     this.loadData()
+    this.communicationService.reloadObservable.subscribe(response =>{
+      this.loadData();
+      console.log("Actualizando");
+      
+    });
+
     this.page = 1
     this.previousPage = 1
     this.showPagination = true
-    this.pageSize = 5
+    this.pageSize = 15
+    this.selectedRow = -1
   }
 
 
@@ -42,5 +51,16 @@ export class ListGovBFPComponent implements OnInit {
       }
  
     );
+  }
+
+  setClickedRow(idx : number){
+    if(this.selectedRow == idx){
+      this.selectedRow = -1
+      this.communicationService.sendMessage(null)
+    }
+    else{
+      this.selectedRow = idx
+      this.communicationService.sendMessage(this.govBFPs[idx])
+    }
   }
 }

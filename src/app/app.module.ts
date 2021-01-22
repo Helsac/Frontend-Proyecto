@@ -7,13 +7,17 @@ import { ListGovBFPComponent } from './components/list-gov-bfp/list-gov-bfp.comp
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterGovBfpComponent } from './components/register-gov-bfp/register-gov-bfp.component';
+import { UpdateGovBfpComponent } from './components/update-gov-bfp/update-gov-bfp.component';
+import { DeleteGovBfpComponent } from './components/delete-gov-bfp/delete-gov-bfp.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListGovBFPComponent,
-    RegisterGovBfpComponent
+    RegisterGovBfpComponent,
+    UpdateGovBfpComponent,
+    DeleteGovBfpComponent
   ],
   imports: [
     BrowserModule,
