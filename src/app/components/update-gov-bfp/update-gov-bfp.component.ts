@@ -34,7 +34,7 @@ export class UpdateGovBfpComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'New'});
+    this.modalService.open(content, {ariaLabelledBy: 'Update'});
   }
 
   update(){
@@ -42,6 +42,7 @@ export class UpdateGovBfpComponent implements OnInit {
       data=>{
         console.log("updating")
         this.communicationService.reload(true);
+        
       }
 
     );

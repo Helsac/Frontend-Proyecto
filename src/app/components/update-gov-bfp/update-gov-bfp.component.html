@@ -12,41 +12,62 @@
       </button>
     </div>
     <div class="modal-body">
-      <form (ngSubmit) = "update()" #govBFPForm="ngForm">
+      <form (ngSubmit) = "update()" #selectedGovBFPForm="ngForm">
         <div class="form-group">
 
           <label for="yearOfBalance">Year of Balance</label>
           <div class="input-group">
-            <input id="yearOfBalance" required [(ngModel)]="selectedGovBFP.yearOfBalance" name = "yearOfBalance"  class="form-control" ngModel >
+            <input type="number" id="yearOfBalance"  [(ngModel)]="selectedGovBFP.yearOfBalance" name = "yearOfBalance"  class="form-control required"  required #yearofBalance="ngModel">
+            
           </div>
-
+          <div class="text-danger small" *ngIf="yearofBalance.invalid && (yearofBalance.dirty || yearofBalance.touched)">
+            The year of balance is required.      
+          </div>
+          
           <label for="state">Actual/Revised/Estimates</label>
           <div class="input-group">
-            <input id=".state" required [(ngModel)]="selectedGovBFP.state" name = "state" class="form-control" ngModel>
+            <input id="state"  [(ngModel)]="selectedGovBFP.state" name = "state" class="form-control" required #state="ngModel">
+          </div>
+          <div class="text-danger small" *ngIf="state.invalid && (state.dirty || state.touched)">
+            The status is required.      
           </div>
 
           <label for="category">Category</label>
           <div class="input-group">
-            <input id="category" [(ngModel)]="selectedGovBFP.category" name = "category"class="form-control" ngModel>
+            <input id="category" [(ngModel)]="selectedGovBFP.category" name = "category"class="form-control" required #category="ngModel">
+          </div>
+          <div class="text-danger small" *ngIf="category.invalid && (category.dirty || category.touched)">
+            The category is required.      
           </div>
 
           <label for="item">Item</label>
           <div class="input-group">
-            <input id="item" [(ngModel)]="selectedGovBFP.item" name = "item" class="form-control" ngModel>
+            <input id="item" [(ngModel)]="selectedGovBFP.item" name = "item" class="form-control" required #item="ngModel">
           </div>
+          <div class="text-danger small" *ngIf="item.invalid && (item.dirty || item.touched)">
+            The item is required.      
+          </div>
+
 
           <label for="amount">	Amount( S$ million)</label>
           <div class="input-group">
-            <input id="amount" [(ngModel)]="selectedGovBFP.amount" name = "amount" class="form-control" ngModel>
+            <input id="amount" [(ngModel)]="selectedGovBFP.amount" name = "amount" class="form-control" required #amount="ngModel">
+          </div>
+          <div class="text-danger small" *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+            The amount is required.      
           </div>
 
           <label for="percentOfGdp">Percent of gdp</label>
           <div class="input-group">
-            <input id="percentOfGdp" [(ngModel)]="selectedGovBFP.percentOfGdp" name = "percentOfGdp" class="form-control" ngModel >
+            <input id="percentOfGdp" [(ngModel)]="selectedGovBFP.percentOfGdp" name = "percentOfGdp" class="form-control" required #percentOfGdp="ngModel" >
           </div>
+          <div class="text-danger small" *ngIf="percentOfGdp.invalid && (percentOfGdp.dirty || percentOfGdp.touched)">
+            The percent of GDP is required.      
+          </div>
+          
         </div>
         <div class="modal-footer">
-            <button data-dismiss="modal" class="btn btn-primary">Save</button>
+            <button  class="btn btn-primary" [disabled]="selectedGovBFPForm.form.invalid" (click) = "modal.dismiss();">Save</button>
             </div>
       </form>
     </div>

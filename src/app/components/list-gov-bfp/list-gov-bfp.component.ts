@@ -30,7 +30,7 @@ export class ListGovBFPComponent implements OnInit {
     this.communicationService.reloadObservable.subscribe(response =>{
       this.loadData();
       console.log("Actualizando");
-      
+      this.setClickedRow(-1);
     });
 
     this.page = 1
@@ -60,7 +60,12 @@ export class ListGovBFPComponent implements OnInit {
     }
     else{
       this.selectedRow = idx
-      this.communicationService.sendMessage(this.govBFPs[idx])
+      this.communicationService.sendMessage(this.govBFPs[idx + this.pageSize*(this.page-1)])
     }
+  }
+
+  formatNumber(num : number){
+    return Intl.NumberFormat('en-us', {minimumFractionDigits: 2}).format(num)
+
   }
 }
