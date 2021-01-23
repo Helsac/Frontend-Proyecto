@@ -13,7 +13,7 @@
     </div>
     <div class="modal-body">
       <form (ngSubmit) = "update()" #selectedGovBFPForm="ngForm">
-        <div class="form-group">
+        <div class="form-group" *ngIf = "selectedGovBFP != null">
 
           <label for="yearOfBalance">Year of Balance</label>
           <div class="input-group">
@@ -24,7 +24,7 @@
             The year of balance is required.      
           </div>
           
-          <label for="state">Actual/Revised/Estimates</label>
+          <label for="state">Actual/Revised/Estimated</label>
           <div class="input-group">
             <input id="state"  [(ngModel)]="selectedGovBFP.state" name = "state" class="form-control" required #state="ngModel">
           </div>

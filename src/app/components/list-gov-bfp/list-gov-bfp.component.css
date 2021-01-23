@@ -14,3 +14,7 @@ ngb-pagination ::ng-deep ul > li.active > a {
     background-color: #123456 !important;
     border-color: #123456
 }
+
+.table th {
+   cursor: pointer; 
+}
