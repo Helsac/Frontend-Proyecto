@@ -26,7 +26,6 @@ export class RegisterGovBfpComponent implements OnInit {
     this.govBFP = new GovernmentBFP()
   }
   save(){
-    console.log("GUARDANDO")
     this.govBFPService.registerGovBFP(this.govBFP).subscribe(data => {
       console.log(data);
       this.communicationService.reload(true);

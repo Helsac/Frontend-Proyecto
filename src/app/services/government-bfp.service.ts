@@ -35,5 +35,9 @@ export class GovernmentBFPService {
     return this.http.delete(this.urlBase + "/" + id, {headers: this.httpHeaders});
   }
 
-
+  filterGovBFP(filter : string){
+    return this.http.get(this.urlBase+"/filter/" + filter).pipe(
+      map(response => response as GovernmentBFP[])
+    );
+  }
 }

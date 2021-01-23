@@ -41,7 +41,6 @@ export class UpdateGovBfpComponent implements OnInit {
   update(){
     this.govBFPService.updateGovBFP(this.selectedGovBFP).subscribe(
       data=>{
-        console.log("updating")
         this.communicationService.reload(true);
         
       }

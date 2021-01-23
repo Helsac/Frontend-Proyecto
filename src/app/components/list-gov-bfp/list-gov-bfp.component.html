@@ -1,4 +1,6 @@
-  
+<div class ="d-flex justify-content-end">
+<input type="text" (input) = "loadData()" [(ngModel)] = filter placeholder="Search..">
+</div>
 <div class="panel panel-primary" *ngIf="loadedD">
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered table-sm row-border "  >

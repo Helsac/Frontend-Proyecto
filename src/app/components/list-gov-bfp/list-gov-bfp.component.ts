@@ -26,24 +26,23 @@ export class ListGovBFPComponent implements OnInit {
   previousPage : number
   pageSize : number
   totalI: number
-  showPagination : boolean = false
-  loadedD : boolean = false
+  loadedD : boolean
   selectedRow : number
   lastSort: number
   decre : boolean
+  filter : string
 
   ngOnInit(): void {
+    this.filter = ""
     this.loadData()
     this.communicationService.reloadObservable.subscribe(response =>{
       this.loadData();
-      console.log("Actualizando");
       this.setClickedRow(-1);
       
     });
-
+    
     this.page = 1
     this.previousPage = 1
-    this.showPagination = true
     this.pageSize = 15
     this.selectedRow = -1
     this.decre = false
@@ -52,19 +51,29 @@ export class ListGovBFPComponent implements OnInit {
 
 
   loadData(){
+    if(this.filter == ""){
     this.govBFPService.listGovBFP().subscribe(
-      
       govBFPs => {this.govBFPs = govBFPs;
         this.loadedD = true
         if(this.lastSort != -1){
           this.decre = !this.decre
-          console.log(this.lastSort)
           this.sortT(this.lastSort);
-          console.log(this.govBFPs)
         }
       }
  
     );
+    }
+    else{
+      this.govBFPService.filterGovBFP(this.filter).subscribe(
+        govBFPs => {this.govBFPs = govBFPs;
+          this.loadedD = true
+          if(this.lastSort != -1){
+            this.decre = !this.decre
+            this.sortT(this.lastSort);
+          }
+        }
+      )
+    }
   }
 
   setClickedRow(idx : number){
