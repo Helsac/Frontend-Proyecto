@@ -29,7 +29,7 @@
         </tbody>
       </table>
       
-        <ngb-pagination class="d-flex justify-content-end" [rotate]="true" [ellipses]="false"  [maxSize]="5" [collectionSize]="govBFPs.length" [pageSize]="pageSize" [(page)]="page" aria-label="Default pagination" [boundaryLinks]="false"
+        <ngb-pagination class="d-flex justify-content-end" (click) = "setClickedRow(-1)" [rotate]="true" [ellipses]="false"  [maxSize]="5" [collectionSize]="govBFPs.length" [pageSize]="pageSize" [(page)]="page" aria-label="Default pagination" [boundaryLinks]="false"
             ><ng-template ngbPaginationNumber let-p>{{ p }}</ng-template> </ngb-pagination>
           </div>
       
