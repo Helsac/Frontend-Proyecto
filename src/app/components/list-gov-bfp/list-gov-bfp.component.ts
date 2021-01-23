@@ -68,7 +68,7 @@ export class ListGovBFPComponent implements OnInit {
   }
 
   setClickedRow(idx : number){
-    if(this.selectedRow == idx){
+    if(this.selectedRow == idx || idx == -1){
       this.selectedRow = -1
       this.communicationService.sendMessage(null)
     }
@@ -82,8 +82,12 @@ export class ListGovBFPComponent implements OnInit {
     return Intl.NumberFormat('en-us', {minimumFractionDigits: 2}).format(num)
 
   }
+  formatNumber2(num : number){
+    return Intl.NumberFormat('en-us', {minimumFractionDigits: 0}).format(num)
 
+  }
   sortT(act : number){
+    this.setClickedRow(-1);
     console.log("Sorting")
     if(act == this.lastSort){
       this.decre = !this.decre

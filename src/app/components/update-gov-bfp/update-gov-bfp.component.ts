@@ -13,6 +13,7 @@ export class UpdateGovBfpComponent implements OnInit {
 
   constructor(private govBFPService : GovernmentBFPService, private modalService: NgbModal, private communicationService : CommunicationService) { }
   selectedGovBFP : GovernmentBFP
+  states : String[] = ["Actual", "Revised", "Estimated"]
   ngOnInit(): void {
     this.selectedGovBFP = null
     this.communicationService.sendMessageObservable.subscribe(response =>{

@@ -24,9 +24,13 @@
             The year of balance is required.      
           </div>
           
-          <label for="state">Actual/Revised/Estimated</label>
-          <div class="input-group">
-            <input id="state"  [(ngModel)]="selectedGovBFP.state" name = "state" class="form-control" required #state="ngModel">
+          <div class="form-group">
+            <label for="power">Status</label>
+            <select class="form-control"  id="state"
+                    required
+                    [(ngModel)]="selectedGovBFP.state" name="state" #state="ngModel">
+              <option *ngFor="let st of states" required [value]="st">{{st}}</option>
+            </select>
           </div>
           <div class="text-danger small" *ngIf="state.invalid && (state.dirty || state.touched)">
             The status is required.      
@@ -51,7 +55,7 @@
 
           <label for="amount">	Amount( S$ million)</label>
           <div class="input-group">
-            <input id="amount" [(ngModel)]="selectedGovBFP.amount" name = "amount" class="form-control" required #amount="ngModel">
+            <input type ="number"  id="amount" [(ngModel)]="selectedGovBFP.amount" name = "amount" class="form-control" required #amount="ngModel">
           </div>
           <div class="text-danger small" *ngIf="amount.invalid && (amount.dirty || amount.touched)">
             The amount is required.      
@@ -59,7 +63,7 @@
 
           <label for="percentOfGdp">Percent of gdp</label>
           <div class="input-group">
-            <input id="percentOfGdp" [(ngModel)]="selectedGovBFP.percentOfGdp" name = "percentOfGdp" class="form-control" required #percentOfGdp="ngModel" >
+            <input type ="number"  id="percentOfGdp" [(ngModel)]="selectedGovBFP.percentOfGdp" name = "percentOfGdp" class="form-control" required #percentOfGdp="ngModel" >
           </div>
           <div class="text-danger small" *ngIf="percentOfGdp.invalid && (percentOfGdp.dirty || percentOfGdp.touched)">
             The percent of GDP is required.      
@@ -67,7 +71,7 @@
           
         </div>
         <div class="modal-footer">
-            <button  class="btn btn-primary" [disabled]="selectedGovBFPForm.form.invalid" (click) = "modal.dismiss();">Save</button>
+            <button  class="btn btn-primary" [disabled]="selectedGovBFPForm.form.invalid" (click) = "modal.dismiss('Done');">Save</button>
             </div>
       </form>
     </div>

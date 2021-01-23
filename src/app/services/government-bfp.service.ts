@@ -11,7 +11,7 @@ import { map, catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GovernmentBFPService {
-  private urlBase = "http://localhost:8080/govAnual/govBFP";
+  private urlBase = "http://localhost:8080/govAnnual/govBFP";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   
   constructor(private http: HttpClient,private router: Router) { }

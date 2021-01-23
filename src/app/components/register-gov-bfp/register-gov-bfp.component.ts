@@ -14,7 +14,7 @@ import { CommunicationService } from 'src/app/services/communication.service';
 export class RegisterGovBfpComponent implements OnInit {
 
   govBFP : GovernmentBFP 
-
+  states : String[] = ["Actual", "Revised", "Estimated"]
   constructor(private govBFPService : GovernmentBFPService, private modalService: NgbModal, private communicationService : CommunicationService) { }
 
   ngOnInit(): void {
